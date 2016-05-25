@@ -8,7 +8,9 @@ module.exports = {
 
 			ws.onmessage = function(e) {
 				var response = JSON.parse(e.data);
-				dispatch({ type: "RECEIVE_BITCOIN_DATA", bitcoins: response });
+				dispatch({ type: "RECEIVE_BITCOIN_DATA", bitcoins: response.data });
+				dispatch({ type: "RECEIVE_SINGLE_BITCOIN_DATA", bitcoins: response.data });
+				dispatch({ type: "RECEIVE_SINGLE_BITCOIN_DATA_TOTAL", amount: response.data.inputs[0].amount });
 			}
 		}
 	}

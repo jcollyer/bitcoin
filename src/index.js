@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux';
 import store from './store'
 import router from './router';
-import { startListeningToToshi } from './actions/bitcoin'
+import { startListeningToToshi } from './actions/bitcoins'
+import { Circuit } from './circuit'
+import { TimerWatch } from './timer'
 
 import './style.less'
 

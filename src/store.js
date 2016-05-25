@@ -11,4 +11,4 @@ const logger = store => next => action => {
 	return result
 }
 
-module.exports = applyMiddleware(ReduxThunk,logger)(createStore)(rootReducer,initialState);
+module.exports = applyMiddleware(ReduxThunk)(createStore)(rootReducer,initialState);
