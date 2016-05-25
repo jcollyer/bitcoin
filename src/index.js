@@ -1,22 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
-import Counter from './components/Counter'
-import counter from './reducers'
+import { Provider } from 'react-redux';
+import store from './store'
+import router from './router';
+import { startListeningToToshi } from './actions/bitcoin'
 
-const store = createStore(counter)
-const appElement = document.getElementById('app')
+import './style.less'
 
-function render() {
-  ReactDOM.render(
-    <Counter
-      value={store.getState()}
-      onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-      onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-    />,
-    appElement
-  )
-}
 
-render()
-store.subscribe(render)
+ReactDOM.render(
+  <Provider store={store}>{router}</Provider>,
+  document.getElementById('app')
+);
+
+// setup toshi listeners
+setTimeout(function(){
+	store.dispatch( startListeningToToshi() );
+});
